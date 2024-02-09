@@ -6,9 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Teacher teacher1 = new Teacher(1, "John Doe", "Math");
         Teacher teacher2 = new Teacher(2, "Jane Doe", "Science");
-        Student student1 = new Student(1, "Alice", "1234", 90);
-        Student student2 = new Student(2, "Bob", "5678", 80);
-        Student student3 = new Student(3, "Charlie", "91011", 70);
+        Student student1 = new Student(1, "Alice", "1234", 2);
+        Student student2 = new Student(2, "Bob", "5678", 1);
+        Student student3 = new Student(3, "Charlie", "91011", 3);
         Course course1 = new Course(1, "Math", teacher1, List.of(student1, student2));
         Course course2 = new Course(2, "Science", teacher2, List.of(student2, student3));
 
@@ -43,5 +43,23 @@ public class Main {
         System.out.println("Student 5 before withGrade(): " + student5);
         student5.withGrade(100);
         System.out.println("After withGrade() the grade of student5: " + student5.getGrade());
+
+        "---".repeat(10).lines().forEach(System.out::println);
+
+        System.out.println("***Test: toString() with @Value***");
+        Management management1 = new Management(1, "John Doe");
+        System.out.println("Management 1: " + management1);
+
+        "---".repeat(10).lines().forEach(System.out::println);
+
+        System.out.println("***Test: University Service***");
+
+        UniversityService universityService = new UniversityService();
+        University university = new University(1, "University of Wonderland: ", List.of(course1, course2));
+
+        System.out.println("Average grade of a Course1: " + universityService.calculateAverageGrade(course1));
+        System.out.println("Average grade of the entire University: " + universityService.calculateAverageGrade(university));
+        System.out.println("Good students of the entire University: " + universityService.getGoodStudents(university));
+
     }
 }
